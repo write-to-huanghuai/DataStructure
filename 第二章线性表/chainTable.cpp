@@ -1,121 +1,121 @@
-///*
-//×ÓÈÎÎñÃûÈÎÎñ:1_2 ¶¯Ì¬Ë³Ğò´æ´¢ÏßĞÔ±íµÄ»ù±¾ÊµÏÖ
-//*/
-//
-//#include <stdio.h>
-//#include <stdlib.h>
-//#include <string.h>
-//#define LIST_INIT_SIZE 100
-//#define LISTINCREMENT 10
-//#define Status int
-//#define OVERFLOW -1
-//#define OK 1
-//#define ERROR 0
-//#define ElemType int
-//
-//typedef struct
-//{
-//	ElemType * elem;
-//	int length;
-//	int listsize;
-//}SqList;
-////º¯Êı½éÉÜ
-//Status InitList(SqList *L); //³õÊ¼»¯
-//Status ListInsert(SqList *L, int i, ElemType e);//²åÈë
-//Status ListDelete(SqList *L, int i, ElemType *e);//É¾³ı
-//void ListPrint(SqList L);//Êä³ö´òÓ¡
-//void DeleteMin(SqList *L);//É¾³ı×îĞ¡
-//
-//Status InitList(SqList *L)
-//{
-//	L->elem = (ElemType *)malloc(LIST_INIT_SIZE * sizeof(ElemType));//ÉêÇë100¿Õ¼ä
-//	if (!L->elem)//ÉêÇëÊ§°Ü
-//		return ERROR;
-//	L->length = 0;//³¤¶È0
-//	L->listsize = LIST_INIT_SIZE;//ÈİÁ¿100
-//	return OK;//ÉêÇë³É¹¦
-//}
-//
-//Status ListInsert(SqList *L, int i, ElemType e)
-//{
-//	int j;
-//	ElemType *newbase;
-//	if (i<1 || i>L->length + 1)
-//		return ERROR;//·Ç·¨ÊäÈë
-//
-//	if (L->length >= L->listsize)//´æÂúÁË£¬ĞèÒª¸ü´ó¿Õ¼ä
-//	{
-//		newbase = (ElemType*)realloc(L->elem, (L->listsize + LISTINCREMENT) * sizeof(ElemType));//´ó10µÄ¿Õ¼ä
-//		if (!newbase)//ÉêÇëÊ§°Ü
-//			return ERROR;
-//		L->elem = newbase;//µ÷Ö¸Õë
-//		L->listsize += LISTINCREMENT;//ĞÂÈİÁ¿
-//	}
-//
-//	for (j = L->length; j > i - 1; j--)//´ÓºóÍùÇ°¸²¸Ç
-//		L->elem[j] = L->elem[j - 1];
-//	L->elem[i - 1] = e;//ÔÚÁô³öµÄÎ»ÖÃ¸³Öµ
-//	L->length++;//³¤¶È+1
-//	return OK;
-//}
-//
-//Status ListDelete(SqList *L, int i, ElemType *e)
-//{
-//	int j;
-//	if (i<1 || i>L->length)//·Ç·¨ÊäÈë/±í¿Õ
-//		return ERROR;
-//	*e = L->elem[i - 1];//ÎªÁË·µ»ØÖµ
-//	for (j = i - 1; j <= L->length; j++)//´ÓÇ°Íùºó¸²¸Ç
-//		L->elem[j] = L->elem[j + 1];
-//	(L->length)--;//³¤¶È¼õ1
-//	return OK;//·µ»ØÉ¾³ıÖµ
-//}
-//
-//void ListPrint(SqList L)
-//{
-//	int i;
-//	for (i = 0; i < L.length; i++)
-//		printf("%d ", L.elem[i]);
-//	printf("\n");//ÎªÁËÃÀ¹Û
-//}
-//
-//void DeleteMin(SqList *L)
-//{
-//	//±í¿ÕÔÚListdeleteº¯ÊıÀïÅĞ¶Ï
-//	int i;
-//	int j = 0;//×îĞ¡ÖµÏÂ±ê
-//	ElemType *e;
-//	for (i = 0; i < L->length; i++)//Ñ°ÕÒ×îĞ¡
-//	{
-//		if (L->elem[i] < L->elem[j])
-//			j = i;
-//	}
-//	ListDelete(L, j + 1, &e);//µ÷ÓÃÉ¾³ı£¬×¢ÒâjÒª+1
-//}
-//
-//int main(void)
-//{
-//	SqList L;
-//	int i;
-//	ElemType e;
-//	ElemType data[9] = { 11,-22,-33,3,-88,21,77,0,-9 };
-//	InitList(&L);
-//	for (i = 1; i <= 9; i++)
-//	{
-//		ListInsert(&L, i, data[i - 1]);
-//	}
-//	printf("²åÈëÍê³Éºó L = : ");
-//	ListPrint(L);
-//	ListDelete(&L, 2, &e);
-//	printf("É¾³ıµÚ 2 ¸öºóL = : ");
-//	ListPrint(L);
-//	DeleteMin(&L);
-//	printf("É¾³ıLÖĞ×îĞ¡ÖµºóL = : ");
-//	ListPrint(L);
-//	DeleteMin(&L);
-//	printf("É¾³ıLÖĞ×îĞ¡ÖµºóL = : ");
-//	ListPrint(L);
-//	DeleteMin(&L);
-//	printf("É¾³ıLÖĞ×îĞ¡ÖµºóL = : ");
-//	ListPrint(L);
-//}
+/*
+å­ä»»åŠ¡åä»»åŠ¡:1_2 åŠ¨æ€é¡ºåºå­˜å‚¨çº¿æ€§è¡¨çš„åŸºæœ¬å®ç°
+*/
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#define LIST_INIT_SIZE 100
+#define LISTINCREMENT 10
+#define Status int
+#define OVERFLOW -1
+#define OK 1
+#define ERROR 0
+#define ElemType int
+
+typedef struct
+{
+	ElemType * elem;
+	int length;
+	int listsize;
+}SqList;
+//å‡½æ•°ä»‹ç»
+Status InitList(SqList *L); //åˆå§‹åŒ–
+Status ListInsert(SqList *L, int i, ElemType e);//æ’å…¥
+Status ListDelete(SqList *L, int i, ElemType *e);//åˆ é™¤
+void ListPrint(SqList L);//è¾“å‡ºæ‰“å°
+void DeleteMin(SqList *L);//åˆ é™¤æœ€å°
+
+Status InitList(SqList *L)
+{
+	L->elem = (ElemType *)malloc(LIST_INIT_SIZE * sizeof(ElemType));//ç”³è¯·100ç©ºé—´
+	if (!L->elem)//ç”³è¯·å¤±è´¥
+		return ERROR;
+	L->length = 0;//é•¿åº¦0
+	L->listsize = LIST_INIT_SIZE;//å®¹é‡100
+	return OK;//ç”³è¯·æˆåŠŸ
+}
+
+Status ListInsert(SqList *L, int i, ElemType e)
+{
+	int j;
+	ElemType *newbase;
+	if (i<1 || i>L->length + 1)
+		return ERROR;//éæ³•è¾“å…¥
+
+	if (L->length >= L->listsize)//å­˜æ»¡äº†ï¼Œéœ€è¦æ›´å¤§ç©ºé—´
+	{
+		newbase = (ElemType*)realloc(L->elem, (L->listsize + LISTINCREMENT) * sizeof(ElemType));//å¤§10çš„ç©ºé—´
+		if (!newbase)//ç”³è¯·å¤±è´¥
+			return ERROR;
+		L->elem = newbase;//è°ƒæŒ‡é’ˆ
+		L->listsize += LISTINCREMENT;//æ–°å®¹é‡
+	}
+
+	for (j = L->length; j > i - 1; j--)//ä»åå¾€å‰è¦†ç›–
+		L->elem[j] = L->elem[j - 1];
+	L->elem[i - 1] = e;//åœ¨ç•™å‡ºçš„ä½ç½®èµ‹å€¼
+	L->length++;//é•¿åº¦+1
+	return OK;
+}
+
+Status ListDelete(SqList *L, int i, ElemType *e)
+{
+	int j;
+	if (i<1 || i>L->length)//éæ³•è¾“å…¥/è¡¨ç©º
+		return ERROR;
+	*e = L->elem[i - 1];//ä¸ºäº†è¿”å›å€¼
+	for (j = i - 1; j <= L->length; j++)//ä»å‰å¾€åè¦†ç›–
+		L->elem[j] = L->elem[j + 1];
+	(L->length)--;//é•¿åº¦å‡1
+	return OK;//è¿”å›åˆ é™¤å€¼
+}
+
+void ListPrint(SqList L)
+{
+	int i;
+	for (i = 0; i < L.length; i++)
+		printf("%d ", L.elem[i]);
+	printf("\n");//ä¸ºäº†ç¾è§‚
+}
+
+void DeleteMin(SqList *L)
+{
+	//è¡¨ç©ºåœ¨Listdeleteå‡½æ•°é‡Œåˆ¤æ–­
+	int i;
+	int j = 0;//æœ€å°å€¼ä¸‹æ ‡
+	ElemType *e;
+	for (i = 0; i < L->length; i++)//å¯»æ‰¾æœ€å°
+	{
+		if (L->elem[i] < L->elem[j])
+			j = i;
+	}
+	ListDelete(L, j + 1, &e);//è°ƒç”¨åˆ é™¤ï¼Œæ³¨æ„jè¦+1
+}
+
+int main(void)
+{
+	SqList L;
+	int i;
+	ElemType e;
+	ElemType data[9] = { 11,-22,-33,3,-88,21,77,0,-9 };
+	InitList(&L);
+	for (i = 1; i <= 9; i++)
+	{
+		ListInsert(&L, i, data[i - 1]);
+	}
+	printf("æ’å…¥å®Œæˆå L = : ");
+	ListPrint(L);
+	ListDelete(&L, 2, &e);
+	printf("åˆ é™¤ç¬¬ 2 ä¸ªåL = : ");
+	ListPrint(L);
+	DeleteMin(&L);
+	printf("åˆ é™¤Lä¸­æœ€å°å€¼åL = : ");
+	ListPrint(L);
+	DeleteMin(&L);
+	printf("åˆ é™¤Lä¸­æœ€å°å€¼åL = : ");
+	ListPrint(L);
+	DeleteMin(&L);
+	printf("åˆ é™¤Lä¸­æœ€å°å€¼åL = : ");
+	ListPrint(L);
+}
